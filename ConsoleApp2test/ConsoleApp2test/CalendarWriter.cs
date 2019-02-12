@@ -12,39 +12,47 @@ namespace ConsoleApp2test
 
         public void WriteCalendar(DateTime dateValue)
         {
-            StringBuilder calendar = new StringBuilder(Title);
             var workingDays = 0;
-            CreateCalendar(dateValue, calendar, ref workingDays);
-            Console.WriteLine(calendar);
+            CreateCalendar(dateValue, ref workingDays);
             Console.WriteLine("Working days count: {0}", workingDays);
         }
 
-        private void CreateCalendar(DateTime dateValue, StringBuilder calendar, ref int workingDays)
+        private void CreateCalendar(DateTime dateValue, ref int workingDays)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(Title);
+            Console.ResetColor();
+
             var date = new DateTime(dateValue.Year, dateValue.Month, 1);
-            WriteAlignmentBeforeFirstDate(date, calendar);
+            WriteAlignmentBeforeFirstDate(date);
+
             for (; date.Month == dateValue.Month; date = date.AddDays(1))
             {
-                WriteDateWithAlignment(date, calendar);
+                var color = ConsoleColor.Red;
                 if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday)
                 {
+                    color = ConsoleColor.Blue;
                     ++workingDays;
                 }
+                WriteDateWithAlignment(date, color);
             }
+            Console.Write("\n");
         }
 
-        private void WriteAlignmentBeforeFirstDate(DateTime date, StringBuilder calendar)
+        private void WriteAlignmentBeforeFirstDate(DateTime date)
         {
             int dayOfWeek = (int)date.DayOfWeek;
-            calendar.Append(String.Join("", Enumerable.Repeat(" ", dayOfWeek * _spaces)));
+            Console.Write(String.Join("", Enumerable.Repeat(" ", dayOfWeek * _spaces)));
         }
 
-        private void WriteDateWithAlignment(DateTime date, StringBuilder calendar)
+        private void WriteDateWithAlignment(DateTime date, ConsoleColor color)
         {
-            calendar.Append(date.Day);
-            calendar.Append(date.DayOfWeek == DayOfWeek.Saturday
+            Console.ForegroundColor = color;
+            Console.Write(date.Day);
+            Console.ResetColor();
+            Console.Write(date.DayOfWeek == DayOfWeek.Saturday
                 ? "\n"
-                : String.Join("", Enumerable.Repeat(" ", _spaces - (int) Math.Floor(Math.Log10(date.Day) + 1))));
+            : String.Join("", Enumerable.Repeat(" ", _spaces - (int) Math.Floor(Math.Log10(date.Day) + 1))));
         }
     }
 }
