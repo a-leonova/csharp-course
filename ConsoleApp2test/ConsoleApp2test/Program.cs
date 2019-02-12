@@ -18,7 +18,7 @@ namespace ConsoleApp2test
                 return;
             }
             var writer = new CalendarWriter();
-            writer.Write(dateValue);
+            writer.WriteCalendar(dateValue);
       //      Console.ReadLine();
         }
     

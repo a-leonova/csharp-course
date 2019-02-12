@@ -5,15 +5,22 @@ using System.Text;
 
 namespace ConsoleApp2test
 {
-    class CalendarWriter
+    class CalendarWriter : ICalendarWriter
     {
         private const String Title = "sun mon tue wed thu fri sat\n";
         private int _spaces = 4;
 
-        public void Write(DateTime dateValue)
+        public void WriteCalendar(DateTime dateValue)
         {
             StringBuilder calendar = new StringBuilder(Title);
             var workingDays = 0;
+            CreateCalendar(dateValue, calendar, ref workingDays);
+            Console.WriteLine(calendar);
+            Console.WriteLine("Working days count: {0}", workingDays);
+        }
+
+        private void CreateCalendar(DateTime dateValue, StringBuilder calendar, ref int workingDays)
+        {
             var date = new DateTime(dateValue.Year, dateValue.Month, 1);
             WriteAlignmentBeforeFirstDate(date, calendar);
             for (; date.Month == dateValue.Month; date = date.AddDays(1))
@@ -24,8 +31,6 @@ namespace ConsoleApp2test
                     ++workingDays;
                 }
             }
-            Console.WriteLine(calendar);
-            Console.WriteLine("Working days count: {0}", workingDays);
         }
 
         private void WriteAlignmentBeforeFirstDate(DateTime date, StringBuilder calendar)
@@ -41,7 +46,5 @@ namespace ConsoleApp2test
                 ? "\n"
                 : String.Join("", Enumerable.Repeat(" ", _spaces - (int) Math.Floor(Math.Log10(date.Day) + 1))));
         }
-
-
     }
 }
