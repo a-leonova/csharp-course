@@ -23,17 +23,12 @@ namespace GuessTheNumber
             _name = name;
             Random rand = new Random();
             var randomNumber = rand.Next(Constants.From, Constants.To + 1);
-            int numberFromUser;
 
             _view.ShowMessage("Write number");
-            var _startTime = DateTime.Now;
-            do
+            var startTime = DateTime.Now;
+            while (true)
             {
                 ++_attemptCount;
-                if (_attemptCount % 5 == 0)
-                {
-                    _view.ShowMessage(Constants.Compliments[rand.Next(Constants.Compliments.Count)]);
-                }
                 var stringNumber = _view.ReadMessage();
                 if (stringNumber == "q")
                 {
@@ -41,7 +36,7 @@ namespace GuessTheNumber
                     return;
                 }
 
-                if (!int.TryParse(stringNumber, out numberFromUser))
+                if (!int.TryParse(stringNumber, out var numberFromUser))
                 {
                     _view.ShowMessage("Hey? It doesn't look like a number!!");
                     _history.Append($"{stringNumber}\n");
@@ -61,11 +56,17 @@ namespace GuessTheNumber
                 else
                 {
                     _history.Append($"{numberFromUser} == {randomNumber}\n");
-                    _totalTime = DateTime.Now - _startTime;
+                    _totalTime = DateTime.Now - startTime;
                     FinishGame();
+                    return;
                 }
 
-            } while (numberFromUser != randomNumber);
+                if (_attemptCount % 4 == 0)
+                {
+                    _view.ShowMessage(Constants.Compliments[rand.Next(Constants.Compliments.Count)]);
+                }
+
+            };
         }
 
         private void FinishGame()
