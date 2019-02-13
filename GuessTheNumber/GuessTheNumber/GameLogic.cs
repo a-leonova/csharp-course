@@ -63,7 +63,7 @@ namespace GuessTheNumber
 
                 if (_attemptCount % 4 == 0)
                 {
-                    _view.ShowMessage(Constants.Compliments[rand.Next(Constants.Compliments.Count)]);
+                    _view.ShowMessage($"{_name},{Constants.Compliments[rand.Next(Constants.Compliments.Count)]}");
                 }
 
             };
