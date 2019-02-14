@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LinesCounter": {
+      "commandName": "Project",
+      "commandLineArgs": "*.cs"
+    }
+  }
+}
