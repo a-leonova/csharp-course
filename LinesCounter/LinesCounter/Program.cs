@@ -17,7 +17,7 @@ namespace LinesCounter
 
             var type = args[0];
             var currentPath = Directory.GetCurrentDirectory();
-            var files = Directory.GetFiles("C:\\Users\\Анастасия\\source\\repos\\csharp-course\\LinesCounter", type, SearchOption.AllDirectories);
+            var files = Directory.GetFiles(currentPath, type, SearchOption.AllDirectories);
             foreach (var file in files)
             {
                 var totalCount = 0;
@@ -28,9 +28,10 @@ namespace LinesCounter
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     ++totalCount;
-                    if (!line.StartsWith("//") && string.IsNullOrWhiteSpace(line))
+                    if (!line.StartsWith("//") && !string.IsNullOrWhiteSpace(line))
                     {
                         ++usefulCount;
+                        Console.WriteLine(line);
                     }
                 }
                 Console.WriteLine($"For {file}:\ntotal lines - {totalCount}\nuseful lines - {usefulCount}");

@@ -12,7 +12,6 @@ namespace GuessTheNumber
         private String _name;
         private StringBuilder _history = new StringBuilder();
 
-
         public GameLogic(IView view)
         {
             _view = view;
