@@ -20,6 +20,7 @@ namespace LinesCounter
             var files = Directory.GetFiles(currentPath, type, SearchOption.AllDirectories);
             foreach (var file in files)
             {
+                bool isBlockedComment = false;
                 var totalCount = 0;
                 var usefulCount = 0;
                 var fileStream = new FileStream($"{file}", FileMode.Open, FileAccess.Read);
@@ -28,10 +29,19 @@ namespace LinesCounter
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     ++totalCount;
-                    if (!line.StartsWith("//") && !string.IsNullOrWhiteSpace(line))
+                    if (line.StartsWith("/*"))
+                    {
+                        isBlockedComment = true;
+                    }
+
+                    if (!isBlockedComment && !line.StartsWith("//") && !string.IsNullOrWhiteSpace(line))
                     {
                         ++usefulCount;
-                        Console.WriteLine(line);
+                    }
+
+                    if (line.StartsWith("*/"))
+                    {
+                        isBlockedComment = false;
                     }
                 }
                 Console.WriteLine($"For {file}:\ntotal lines - {totalCount}\nuseful lines - {usefulCount}");
