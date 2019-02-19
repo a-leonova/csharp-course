@@ -6,11 +6,20 @@ namespace GuessTheNumber
 {
     class GameLogic
     {
+        private static readonly IReadOnlyList<string> Compliments = new[]
+        {
+            "You are on right way!",
+            "You are so smarty!",
+            "Keep going!",
+            "You are really cool!"
+        };
+
         private IView _view;
         private int _attemptCount = 0;
         private TimeSpan _totalTime;
         private String _name;
         private StringBuilder _history = new StringBuilder();
+
 
         public GameLogic(IView view)
         {
@@ -21,7 +30,7 @@ namespace GuessTheNumber
         {
             _name = name;
             Random rand = new Random();
-            var randomNumber = rand.Next(Constants.From, Constants.To + 1);
+            var randomNumber = rand.Next(SharedConstants.From, SharedConstants.To + 1);
 
             _view.ShowMessage("Write number");
             var startTime = DateTime.Now;
@@ -62,7 +71,7 @@ namespace GuessTheNumber
 
                 if (_attemptCount % 4 == 0)
                 {
-                    _view.ShowMessage($"{_name},{Constants.Compliments[rand.Next(Constants.Compliments.Count)]}");
+                    _view.ShowMessage($"{_name}, {Compliments[rand.Next(Compliments.Count)]}");
                 }
 
             };

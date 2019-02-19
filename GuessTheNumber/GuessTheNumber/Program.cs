@@ -6,7 +6,7 @@ namespace GuessTheNumber
     {
         private static String greeting = "Hello! Let's play \"Guess the Number\"\n" +
                                          "To start write your name";
-        private static String rules = $"Guess the number from - {Constants.From}, to - {Constants.To}";
+        private static String rules = $"Guess the number from - {SharedConstants.From}, to - {SharedConstants.To}";
         static void Main(string[] args)
         {
             var view = new ConsoleView();
