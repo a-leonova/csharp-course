@@ -43,6 +43,13 @@ namespace lab4
             var employe = db.Employes.Single(e => e.Id == id);
             return employe;
         }
+
+        public void EditEmploye(Employe newEmployeInfo)
+        {
+            var employe = db.Employes.First();
+            EditEmploye(newEmployeInfo, employe.Id);
+        }
+
         public void EditEmploye(Employe newEmployeInfo, int id)
         {
             var employe = db.Employes.Single(e => e.Id == id);
@@ -50,6 +57,12 @@ namespace lab4
             employe.MiddleName = newEmployeInfo.MiddleName;
             employe.LastName = newEmployeInfo.LastName;
             db.SaveChanges();
+        }
+
+        public void EditProject(Project newProjectInfo)
+        {
+            var project = db.Projects.First();
+            EditProject(newProjectInfo, project.Id);
         }
 
         public void EditProject(Project newProjectInfo, int id)
@@ -89,7 +102,9 @@ namespace lab4
         {
             var summed = db.Employes.Select(e => new EmployeWithTotalPremium
             {
-                FirstName = e.FirstName, MiddleName = e.MiddleName, LastName = e.LastName,
+                FirstName = e.FirstName,
+                MiddleName = e.MiddleName,
+                LastName = e.LastName,
                 TotalPremium = e.Projects.Sum(p => p.Premium)
             });
             return summed.OrderBy(s => s.TotalPremium);
