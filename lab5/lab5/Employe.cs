@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace lab4
+namespace lab5
 {
     public class Employe
     {

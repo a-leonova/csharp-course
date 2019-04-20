@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
-namespace lab4
+namespace lab5
 {
     public class DatabaseProvider : IDisposable
     {

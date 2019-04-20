@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
-namespace lab4
+namespace lab5
 {
     public class ApplicationContext : DbContext
     {
@@ -11,10 +11,10 @@ namespace lab4
         public DbSet<Project> Projects{ get; set; }
 
         public ApplicationContext():base(new DbContextOptionsBuilder<ApplicationContext>()
-            .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Db4lab;Trusted_Connection=True;")
+            .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Db5lab;Trusted_Connection=True;")
             .Options)
         {
-            
+            Database.EnsureCreated();
         }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
