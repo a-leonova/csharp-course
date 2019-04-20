@@ -14,7 +14,7 @@ namespace lab5
             .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Db5lab;Trusted_Connection=True;")
             .Options)
         {
-            Database.EnsureCreated();
+       //     Database.EnsureCreated();
         }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)

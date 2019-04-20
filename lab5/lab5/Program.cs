@@ -6,8 +6,16 @@ namespace lab5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            AddInfo();
+           AddInfo();
+           using (DatabaseProvider dbDatabaseProvider = new DatabaseProvider())
+           {
+               var employes = dbDatabaseProvider.GetEmployesFromDB();
+               foreach (Employe employe in employes)
+               {
+                    Console.WriteLine($"{employe.FirstName} {employe.MiddleName} {employe.LastName}");   
+               }
+           }
+           Console.ReadLine();
         }
 
         static void AddInfo()
