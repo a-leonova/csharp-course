@@ -9,7 +9,7 @@ namespace lab5
         public int Id { get; set; }
         public string Name { get; set; }
         public int Premium { get; set; }
-
+        public DateTime Deadline { get; set; }
         public virtual Employe SupplierEmploye { get; set; }
     }
 }
