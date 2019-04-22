@@ -10,7 +10,7 @@ using lab5;
 namespace lab5.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190420064135_InitMigration")]
+    [Migration("20190422065609_InitMigration")]
     partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -42,8 +42,6 @@ namespace lab5.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Deadline");
-
                     b.Property<string>("Name");
 
                     b.Property<int>("Premium");

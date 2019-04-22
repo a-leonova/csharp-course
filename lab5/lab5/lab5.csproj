@@ -15,8 +15,11 @@
     <Compile Remove="Migrations\20190420054140_AddEmployeAgeMigration.cs" />
     <Compile Remove="Migrations\20190420063550_InitMigration.cs" />
     <Compile Remove="Migrations\20190420063922_InitMigration.cs" />
+    <Compile Remove="Migrations\20190420064135_InitMigration.cs" />
     <Compile Remove="Migrations\20190420064226_AddEmployeAgeMigration.cs" />
     <Compile Remove="Migrations\20190420064353_AddEmployeAgeMigration.cs" />
+    <Compile Remove="Migrations\20190420100012_AddEmployeAgeMigration.cs" />
+    <Compile Remove="Migrations\20190420122337_AddProjectDeadlineMigration.cs" />
   </ItemGroup>
 
   <ItemGroup>

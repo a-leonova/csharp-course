@@ -6,22 +6,22 @@ namespace lab5
     {
         static void Main(string[] args)
         {
-           //AddInfo();
-           using (DatabaseProvider dbDatabaseProvider = new DatabaseProvider())
-           {
-               var employes = dbDatabaseProvider.GetEmployesFromDB();
-               foreach (Employe employe in employes)
-               {
-                    Console.WriteLine($"{employe.FirstName} {employe.MiddleName} {employe.LastName}");   
-               }
+            AddInfo();
+            //using (DatabaseProvider dbDatabaseProvider = new DatabaseProvider())
+            //{
+            //    var employes = dbDatabaseProvider.GetEmployesFromDB();
+            //    foreach (Employe employe in employes)
+            //    {
+            //         Console.WriteLine($"{employe.FirstName} {employe.MiddleName} {employe.LastName}");   
+            //    }
 
-               var projects = dbDatabaseProvider.GetProjectsFromDB();
-               foreach (Project project in projects)
-               {
-                   Console.WriteLine($"{project.Name} {project.Premium} {project.Deadline} {project.SupplierEmploye.LastName}");
-               }
-           }
-           Console.ReadLine();
+            //    var projects = dbDatabaseProvider.GetProjectsFromDB();
+            //    foreach (Project project in projects)
+            //    {
+            //        Console.WriteLine($"{project.Name} {project.Premium} {project.SupplierEmploye.LastName}");
+            //    }
+            //}
+            Console.ReadLine();
         }
 
         static void AddInfo()
