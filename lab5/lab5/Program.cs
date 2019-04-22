@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace lab5
 {
@@ -6,7 +7,7 @@ namespace lab5
     {
         static void Main(string[] args)
         {
-            AddInfo();
+            AddInfoAdditional();
             //using (DatabaseProvider dbDatabaseProvider = new DatabaseProvider())
             //{
             //    var employes = dbDatabaseProvider.GetEmployesFromDB();
@@ -48,6 +49,22 @@ namespace lab5
 
             Console.WriteLine("Done!");
             Console.ReadLine();
+        }
+
+        static void AddInfoAdditional()
+        {
+            using (DatabaseProvider db = new DatabaseProvider())
+            {
+                var employe1 = db.GetEmploye(1);
+                var employe2 = db.GetEmploye(2);
+                var employe3 = db.GetEmploye(3);
+                employe1.PhoneNumber = "89990123456";
+                employe2.PhoneNumber = "89960123456";
+                employe3.PhoneNumber = "89130123456";
+                db.SaveDB();
+
+                Console.WriteLine("Done!");
+            }
         }
     }
 

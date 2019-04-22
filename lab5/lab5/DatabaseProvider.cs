@@ -91,6 +91,11 @@ namespace lab5
             db.SaveChanges();
         }
 
+        public void SaveDB()
+        {
+            db.SaveChanges();
+        }
+
         public void DeleteProject(int id)
         {
             Project project = db.Projects.First(e => e.Id == id);
