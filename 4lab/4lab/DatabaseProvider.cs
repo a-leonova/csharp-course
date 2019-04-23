@@ -44,12 +44,6 @@ namespace lab4
             return employe;
         }
 
-        public void EditEmploye(Employe newEmployeInfo)
-        {
-            var employe = db.Employes.First();
-            EditEmploye(newEmployeInfo, employe.Id);
-        }
-
         public void EditEmploye(Employe newEmployeInfo, int id)
         {
             var employe = db.Employes.Single(e => e.Id == id);
@@ -57,12 +51,6 @@ namespace lab4
             employe.MiddleName = newEmployeInfo.MiddleName;
             employe.LastName = newEmployeInfo.LastName;
             db.SaveChanges();
-        }
-
-        public void EditProject(Project newProjectInfo)
-        {
-            var project = db.Projects.First();
-            EditProject(newProjectInfo, project.Id);
         }
 
         public void EditProject(Project newProjectInfo, int id)
