@@ -20,6 +20,7 @@
     <Compile Remove="Migrations\20190420064353_AddEmployeAgeMigration.cs" />
     <Compile Remove="Migrations\20190420100012_AddEmployeAgeMigration.cs" />
     <Compile Remove="Migrations\20190420122337_AddProjectDeadlineMigration.cs" />
+    <Compile Remove="Migrations\20190422070258_AgePhoneNumber.cs" />
   </ItemGroup>
 
   <ItemGroup>

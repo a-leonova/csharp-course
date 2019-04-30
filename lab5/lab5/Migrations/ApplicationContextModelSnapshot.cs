@@ -31,8 +31,6 @@ namespace lab5.Migrations
 
                     b.Property<string>("MiddleName");
 
-                    b.Property<string>("phoneNumber");
-
                     b.HasKey("Id");
 
                     b.ToTable("Employes");
