@@ -1,0 +1,17 @@
+﻿.rowStyle {
+    display: block;
+    color: red;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ff8c00;
+}
+
+.applyButton {
+    display: block;
+    margin: 20px auto;
+    width: 500px;
+}
+
+.myTable {
+    margin: 20px auto;
+}
